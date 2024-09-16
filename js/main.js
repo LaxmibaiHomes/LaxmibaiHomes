@@ -1,4 +1,29 @@
- AOS.init({
+// Navigation
+  var OnePageNavigation = function () {
+    $("body").on("click", "a[href^='#']", function (e) {
+      var hash = this.hash;
+      var target = $(hash);
+
+      // Only apply if the target is found on the same page
+      if (target.length) {
+        e.preventDefault();
+        $("html, body").animate(
+          {
+            scrollTop: target.offset().top,
+          },
+          600,
+          "easeInOutExpo",
+          function () {
+            window.location.hash = hash;
+          }
+        );
+      }
+    });
+  };
+
+  OnePageNavigation();
+
+AOS.init({
  	duration: 800,
  	easing: 'slide',
  	once: true
