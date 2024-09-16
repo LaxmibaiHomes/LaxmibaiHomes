@@ -1,27 +1,4 @@
-// Navigation
-  var OnePageNavigation = function () {
-    $("body").on("click", "a[href^='#']", function (e) {
-      var hash = this.hash;
-      var target = $(hash);
 
-      // Only apply if the target is found on the same page
-      if (target.length) {
-        e.preventDefault();
-        $("html, body").animate(
-          {
-            scrollTop: target.offset().top,
-          },
-          600,
-          "easeInOutExpo",
-          function () {
-            window.location.hash = hash;
-          }
-        );
-      }
-    });
-  };
-
-  OnePageNavigation();
 
 AOS.init({
  	duration: 800,
@@ -292,23 +269,30 @@ AOS.init({
 	};
 	siteSticky();
 
-	// navigation
-	var OnePageNavigation = function() {
-		var navToggler = $('.site-menu-toggle');
-		$("body").on("click", ".main-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a", function(e) {
-			e.preventDefault();
+	// Navigation
+  var OnePageNavigation = function () {
+    $("body").on("click", "a[href^='#']", function (e) {
+      var hash = this.hash;
+      var target = $(hash);
 
-			var hash = this.hash;
+      // Only apply if the target is found on the same page
+      if (target.length) {
+        e.preventDefault();
+        $("html, body").animate(
+          {
+            scrollTop: target.offset().top,
+          },
+          600,
+          "easeInOutExpo",
+          function () {
+            window.location.hash = hash;
+          }
+        );
+      }
+    });
+  };
 
-			$('html, body').animate({
-				'scrollTop': $(hash).offset().top
-			}, 600, 'easeInOutExpo', function(){
-				window.location.hash = hash;
-			});
-
-		});
-	};
-	OnePageNavigation();
+  OnePageNavigation();
 
 	var siteScroll = function() {
 
